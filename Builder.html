@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Joelle Shadi">
+    <title>VESTIQ | Interactive Outfit &amp; Colour Mixer</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>VESTIQ</h1>
+            <p class="subtitle">All outfits, All styles, Every colourway</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="builder.html" class="active">Outfit mixer</a></li>
+                <li><a href="about.html">Lookbook and care</a></li>
+                <li><a href="contact.html">AI size finder</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="form-section">
+            <h2>VESTIQ Custom Outfit &amp; Colourway Studio</h2>
+            <p>Mix and match from our complete collection of tops, outerwear, denim jeans, cargos, and accessories across 16+ colourways to preview your live colour palette and calculate your bundle total in BHD.</p>
+
+            <form onsubmit="buildOutfit(event)" class="custom-form">
+                <div class="form-group">
+                    <label for="topChoice">1. Choose Your Base Top:</label>
+                    <select id="topChoice">
+                        <option value="18.5">480gsm Heavyweight Boxy Hoodie (18.500 BHD)</option>
+                        <option value="21.0">Zip-Up Distressed Vintage Hoodie (21.000 BHD)</option>
+                        <option value="11.0">Vintage Washed Oversized Tee (11.000 BHD)</option>
+                        <option value="12.5">Heavyweight Boxy Mock-Neck Tee (12.500 BHD)</option>
+                        <option value="9.5">Ribbed Cropped Baby Tee (9.500 BHD)</option>
+                        <option value="14.0">Waffle-Knit Thermal Long Sleeve (14.000 BHD)</option>
+                        <option value="22.5">Cable-Knit Fisherman Sweater (22.500 BHD)</option>
+                        <option value="24.0">Brushed Mohair Striped Knit (24.000 BHD)</option>
+                        <option value="16.5">Boxy Oxford Button-Down Shirt (16.500 BHD)</option>
+                        <option value="19.0">Heavy Flannel Overshirt (19.000 BHD)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="topColor">2. Choose Top Colourway:</label>
+                    <select id="topColor">
+                        <option value="#3E2723">Espresso Brown</option>
+                        <option value="#F5EFE6">Warm Cream Beige</option>
+                        <option value="#A68A64">Sand Taupe</option>
+                        <option value="#7B5E4B">Mocha Latte</option>
+                        <option value="#D8CFC2">Oatmeal Heather</option>
+                        <option value="#181818">Onyx Jet Black</option>
+                        <option value="#4A4A4A">Washed Charcoal</option>
+                        <option value="#F9F9F7">Pure Chalk White</option>
+                        <option value="#3B4D3B">Forest Olive</option>
+                        <option value="#9CAF9C">Sage Mist</option>
+                        <option value="#5C1E28">Burgundy Wine</option>
+                        <option value="#B55A44">Terracotta Clay</option>
+                        <option value="#1B2A4A">Midnight Navy</option>
+                        <option value="#234B8E">Cobalt Royal Blue</option>
+                        <option value="#C98A8E">Dusty Rose</option>
+                        <option value="#E6C875">Butter Yellow</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="layerChoice">3. Add Outerwear Layer (Optional):</label>
+                    <select id="layerChoice">
+                        <option value="0">None (Skip Outerwear - 0.000 BHD)</option>
+                        <option value="29.0">Cropped Wool Varsity Jacket (29.000 BHD)</option>
+                        <option value="34.0">Tailored Structured Trench Coat (34.000 BHD)</option>
+                        <option value="32.0">Vintage Faux-Leather Bomber Jacket (32.000 BHD)</option>
+                        <option value="27.5">Boxy Cropped Workwear Canvas Jacket (27.500 BHD)</option>
+                        <option value="23.0">Quilted Down Puffer Vest (23.000 BHD)</option>
+                        <option value="35.0">Heavyweight Cropped Puffer Jacket (35.000 BHD)</option>
+                        <option value="26.5">Raw Selvedge Trucker Denim Jacket (26.500 BHD)</option>
+                        <option value="31.0">Oversized Double-Breasted Blazer (31.000 BHD)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bottomChoice">4. Choose Your Jeans / Bottoms:</label>
+                    <select id="bottomChoice">
+                        <option value="22.0">90s Selvedge Baggy Jeans (22.000 BHD)</option>
+                        <option value="24.0">Super-Wide Skate Puddle Jeans (24.000 BHD)</option>
+                        <option value="20.0">Architectural Slim-Fit Jeans (20.000 BHD)</option>
+                        <option value="21.0">Classic Straight-Leg Vintage Jeans (21.000 BHD)</option>
+                        <option value="23.5">Flared Bootcut Carpenter Jeans (23.500 BHD)</option>
+                        <option value="23.0">Distressed Ripped Street Jeans (23.000 BHD)</option>
+                        <option value="21.5">Utility Multi-Pocket Cargo Pants (21.500 BHD)</option>
+                        <option value="19.5">Parachute Nylon Drawstring Pants (19.500 BHD)</option>
+                        <option value="23.0">Pleated Wide-Leg Tailored Trousers (23.000 BHD)</option>
+                        <option value="17.5">Heavyweight Straight Sweatpants (17.500 BHD)</option>
+                        <option value="16.0">Raw-Hem Baggy Jorts / Denim Shorts (16.000 BHD)</option>
+                        <option value="19.0">Pleated Midi A-Line Skirt (19.000 BHD)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bottomColor">5. Choose Bottom Colourway:</label>
+                    <select id="bottomColor">
+                        <option value="#4A6B82">Washed Vintage Indigo</option>
+                        <option value="#1F2D3D">Raw Dark Indigo</option>
+                        <option value="#A7C4D8">Light Ice Bleach Blue</option>
+                        <option value="#5C5346">Dirty Mud-Wash Denim</option>
+                        <option value="#EAE0D0">Sand Ecru</option>
+                        <option value="#F5EFE6">Warm Cream Beige</option>
+                        <option value="#3E2723">Espresso Brown</option>
+                        <option value="#8C735B">Mocha Taupe</option>
+                        <option value="#3A3A3A">Faded Charcoal Black</option>
+                        <option value="#181818">Onyx Jet Black</option>
+                        <option value="#3B4D3B">Forest Olive</option>
+                        <option value="#B5A689">Desert Khaki</option>
+                        <option value="#8E9296">Stone Grey</option>
+                        <option value="#5C1E28">Burgundy Wine</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="accChoice">6. Add Finishing Accessory / Footwear (Optional):</label>
+                    <select id="accChoice">
+                        <option value="0">None (Skip Accessory - 0.000 BHD)</option>
+                        <option value="28.0">Suede Chunky Court Sneakers (28.000 BHD)</option>
+                        <option value="30.0">Leather Chunky Penny Loafers (30.000 BHD)</option>
+                        <option value="14.5">Canvas Crossbody Messenger Bag (14.500 BHD)</option>
+                        <option value="9.0">Distressed Vintage Leather Belt (9.000 BHD)</option>
+                        <option value="8.5">Embroidered VESTIQ Dad Cap (8.500 BHD)</option>
+                        <option value="8.0">Ribbed Merino Wool Beanie (8.000 BHD)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Generate Complete Outfit Bundle</button>
+            </form>
+
+            <div id="bundleBox" style="display: none; margin-top: 25px; padding: 22px; background-color: #FAF6F0; border: 2px solid #A68A64; border-radius: 8px;">
+                <h3 style="margin-top: 0; color: #3E2723;">Your Custom VESTIQ Look</h3>
+                
+                <div style="display: flex; gap: 20px; align-items: center; margin: 15px 0; padding: 12px; background-color: #FFFFFF; border-radius: 6px; border: 1px solid #D7CCC8;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="topSwatch" style="display: inline-block; width: 34px; height: 34px; border-radius: 50%; border: 2px solid #3E2723;"></span>
+                        <span id="topSwatchLabel" style="font-size: 0.9rem; font-weight: 600;"></span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span id="bottomSwatch" style="display: inline-block; width: 34px; height: 34px; border-radius: 50%; border: 2px solid #3E2723;"></span>
+                        <span id="bottomSwatchLabel" style="font-size: 0.9rem; font-weight: 600;"></span>
+                    </div>
+                </div>
+
+                <p id="bundleText" style="margin-bottom: 0; font-size: 1.05rem; color: #2C1E16;"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+<script>
+        function buildOutfit(event) {
+            event.preventDefault();
+            const topEl = document.getElementById("topChoice");
+            const topColorEl = document.getElementById("topColor");
+            const layerEl = document.getElementById("layerChoice");
+            const bottomEl = document.getElementById("bottomChoice");
+            const bottomColorEl = document.getElementById("bottomColor");
+            const accEl = document.getElementById("accChoice");
+
+            const topPrice = parseFloat(topEl.value);
+            const layerPrice = parseFloat(layerEl.value);
+            const bottomPrice = parseFloat(bottomEl.value);
+            const accPrice = parseFloat(accEl.value);
+            const total = (topPrice + layerPrice + bottomPrice + accPrice).toFixed(3);
+
+            const topColorName = topColorEl.options[topColorEl.selectedIndex].text;
+            const bottomColorName = bottomColorEl.options[bottomColorEl.selectedIndex].text;
+
+            document.getElementById("topSwatch").style.backgroundColor = topColorEl.value;
+            document.getElementById("topSwatchLabel").textContent = "Top: " + topColorName;
+            document.getElementById("bottomSwatch").style.backgroundColor = bottomColorEl.value;
+            document.getElementById("bottomSwatchLabel").textContent = "Bottoms: " + bottomColorName;
+
+            let summary = "• <strong>Top:</strong> " + topColorName + " — " + topEl.options[topEl.selectedIndex].text + "<br>";
+            if (layerPrice > 0) {
+                summary += "• <strong>Outerwear:</strong> " + layerEl.options[layerEl.selectedIndex].text + "<br>";
+            }
+            summary += "• <strong>Bottoms:</strong> " + bottomColorName + " — " + bottomEl.options[bottomEl.selectedIndex].text + "<br>";
+            if (accPrice > 0) {
+                summary += "• <strong>Finishing Piece:</strong> " + accEl.options[accEl.selectedIndex].text + "<br>";
+            }
+            summary += "<br>• <strong>Complete Outfit Bundle Total:</strong> <strong>" + total + " BHD</strong><br><br>" +
+                "Ready to find your exact size from XS to 4XL? Head to the <a href='contact.html'>AI Size Finder</a> next!";
+
+            document.getElementById("bundleText").innerHTML = summary;
+            document.getElementById("bundleBox").style.display = "block";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="[Your Name]">
+    <title>VESTIQ | AI Size Finder &amp; Orders</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>VESTIQ</h1>
+            <p class="subtitle">All outfits, All styles, Every colourway</p>
+        </div>
+    </header>
+
+       <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="builder.html">Outfit mixer</a></li>
+                <li><a href="about.html">Lookbook and care</a></li>
+                <li><a href="contact.html" class="active">AI size finder</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <main class="container">
+        <section class="form-section">
+            <h2>VESTIQ AI Smart Size Recommender</h2>
+            <p>Enter your body proportions, weight, height, and preferred fit below. Our sizing algorithm calculates your exact VESTIQ hoodie, jacket, and denim jean measurements from XS up to 4XL instantly.</p>
+            
+            <form id="aiSizeForm" onsubmit="calculateVestiqSize(event)" class="custom-form">
+                <div class="form-group">
+                    <label for="fullname">Full Name (Presence Check):</label>
+                    <input type="text" id="fullname" name="fullname" required placeholder="e.g. Ali Ahmed">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address (Format Check):</label>
+                    <input type="email" id="email" name="email" required placeholder="customer@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="height">Height in cm (Range Check: 120 – 230 cm):</label>
+                    <input type="number" id="height" name="height" min="120" max="230" required placeholder="e.g. 175">
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Weight in kg (Range Check: 30 – 200 kg):</label>
+                    <input type="number" id="weight" name="weight" min="30" max="200" required placeholder="e.g. 68">
+                </div>
+
+                <div class="form-group">
+                    <label for="build">Body Proportions / Shoulder &amp; Waist Build:</label>
+                    <select id="build" name="build">
+                        <option value="lean">Lean / Narrow Frame</option>
+                        <option value="athletic" selected>Balanced / Athletic Frame</option>
+                        <option value="broad">Broad Shoulders / Muscular Frame</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fit">Desired Outfit Fit Style:</label>
+                    <select id="fit" name="fit">
+                        <option value="slim">Tailored / Slim Fit</option>
+                        <option value="regular" selected>Standard Streetwear Fit</option>
+                        <option value="oversized">Boxy / Oversized Baggy Fit</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="colorway">Preferred Colourway &amp; Item Notes (Optional):</label>
+                    <textarea id="colorway" name="colorway" rows="3" placeholder="e.g. Espresso Hoodie + Washed Indigo 90s Baggy Jeans"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Calculate My Exact VESTIQ Size</button>
+            </form>
+
+            <!-- AI Recommendation Result Box -->
+            <div id="aiResultBox" style="display: none; margin-top: 25px; padding: 20px; background-color: #FAF6F0; border: 2px solid #A68A64; border-radius: 6px;">
+                <h3 style="margin-top: 0; color: #3E2723;">VESTIQ AI Fit Analysis Complete</h3>
+                <p id="aiResultText" style="margin-bottom: 0; font-size: 1.05rem; color: #2C1E16;"></p>
+            </div>
+
+            <p style="margin-top: 25px;">Need a custom alteration or bulk order? Email our styling team directly at <a href="mailto:support@vestiq.bh">support@vestiq.bh</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AlMahd School | Candidate Name: [Your Name] | Candidate Number: [XXXX]</p>
+        </div>
+    </footer>
+
+    <!-- VESTIQ AI Size Calculation Behavior Script (XS to 4XL) -->
+    <script>
+        function calculateVestiqSize(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("fullname").value;
+            const height = parseFloat(document.getElementById("height").value);
+            const weight = parseFloat(document.getElementById("weight").value);
+            const build = document.getElementById("build").value;
+            const fit = document.getElementById("fit").value;
+            const colorway = document.getElementById("colorway").value || "your selected VESTIQ outfit";
+
+            // 1. Base size index from Weight (0=XS, 1=S, 2=M, 3=L, 4=XL, 5=XXL, 6=3XL, 7=4XL)
+            let sizeScore = 2; 
+            if (weight < 52) sizeScore = 0;
+            else if (weight < 63) sizeScore = 1;
+            else if (weight < 75) sizeScore = 2;
+            else if (weight < 88) sizeScore = 3;
+            else if (weight < 102) sizeScore = 4;
+            else if (weight < 116) sizeScore = 5;
+            else if (weight < 132) sizeScore = 6;
+            else sizeScore = 7;
+
+            // 2. Adjust for Height
+            if (height >= 186 && sizeScore < 6) sizeScore += 1;
+            if (height <= 160 && weight < 70 && sizeScore > 0) sizeScore -= 1;
+
+            // 3. Adjust for Body Proportions & Desired Fit
+            if (build === "broad") sizeScore += 1;
+            if (build === "lean" && sizeScore > 0) sizeScore -= 1;
+            if (fit === "oversized") sizeScore += 1;
+            if (fit === "slim" && sizeScore > 0) sizeScore -= 1;
+
+            // Keep within 0 to 7 (XS to 4XL)
+            sizeScore = Math.max(0, Math.min(7, sizeScore));
+
+            const topSizes = ["XS", "S", "M", "L", "XL", "XXL", "3XL", "4XL"];
+            const jeanWaists = ['28"W', '30"W', '32"W', '34"W', '36"W', '38"W', '40"W', '42"W'];
+            const recommendedTop = topSizes[sizeScore];
+            const recommendedJeans = jeanWaists[sizeScore];
+            const inseam = height >= 182 ? '34"L' : (height >= 170 ? '32"L' : '30"L');
+
+            const resultBox = document.getElementById("aiResultBox");
+            const resultText = document.getElementById("aiResultText");
+            
+            resultText.innerHTML = "Hi <strong>" + name + "</strong>! Based on your height (<strong>" + height + " cm</strong>), weight (<strong>" + weight + " kg</strong>), and <strong>" + build + "</strong> proportions:<br><br>" +
+                "• <strong>Recommended Tops &amp; Outerwear Size:</strong> Size <strong>" + recommendedTop + "</strong><br>" +
+                "• <strong>Recommended Denim &amp; Cargo Size:</strong> <strong>" + recommendedJeans + " / " + inseam + "</strong><br>" +
+                "• <strong>Custom Styling Match:</strong> Ready for <em>" + colorway + "</em>.";
+            
+            resultBox.style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
