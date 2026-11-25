@@ -1,0 +1,255 @@
+/* ==========================================================================
+   VESTIQ - Grade 10 IGCSE ICT Chapter 21 External Stylesheet
+   Topic: Web Authoring Presentation Layer (CSS3) - Editorial Boutique Theme
+   ========================================================================== */
+
+/* 1. Global Reset & Base Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, 'Segoe UI', Tahoma, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: #2C1E16;
+    background-color: #F5EFE6; /* Soft Warm Beige Background */
+}
+
+/* Reusable Layout Container */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* 2. Header Layer Styling */
+header {
+    background-color: #3E2723; /* Deep Espresso Brown */
+    color: #FFFFFF;
+    padding: 32px 0;
+    text-align: center;
+    border-bottom: 4px solid #A68A64; /* Warm Taupe Accent */
+}
+
+header h1 {
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    font-size: 3.8rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+    letter-spacing: 3px;
+}
+
+header .subtitle {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #EFE6D8; /* Cream Beige Subtitle */
+    letter-spacing: 0.5px;
+}
+
+/* 3. Navigation Bar Styling (Chapter 21 Hyperlinks & States) */
+nav {
+    background-color: #A68A64; /* Warm Taupe / Tan */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li a {
+    display: block;
+    padding: 14px 24px;
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+/* Pseudo-class Link States (Chapter 21 Requirement) */
+nav ul li a:hover {
+    background-color: #3E2723;
+    color: #FFFFFF;
+}
+
+nav ul li a.active {
+    background-color: #3E2723;
+    border-bottom: 3px solid #D4AF37; /* Soft Champagne Gold Indicator */
+}
+
+/* 4. Main Content Blocks */
+main {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+section {
+    background-color: #FFFFFF;
+    padding: 28px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(62, 39, 35, 0.08);
+    border-left: 4px solid #3E2723;
+}
+
+h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #3E2723;
+    margin-bottom: 14px;
+}
+
+h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #8D6E63;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    font-size: 1.05rem;
+    color: #3E2723;
+    margin-top: 14px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+ul, ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+/* Featured Image Styling */
+.featured-img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 15px 0;
+    border: 1px solid #D7CCC8;
+}
+
+/* 5. Table Styling (Chapter 21 Specification) */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.data-table th {
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    background-color: #3E2723;
+    color: #FFFFFF;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.data-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #D7CCC8;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #FAF6F0;
+}
+
+.data-table tbody tr:hover {
+    background-color: #EFE6D8;
+}
+
+/* 6. Form Styling */
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #3E2723;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid #BCAAA4;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #FFFDFB;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #A68A64;
+    box-shadow: 0 0 5px rgba(166, 138, 100, 0.4);
+}
+
+.submit-btn {
+    align-self: flex-start;
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background-color: #3E2723;
+    color: #FFFFFF;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #A68A64;
+}
+
+/* 7. Footer Layer */
+footer {
+    font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    background-color: #3E2723;
+    color: #D7CCC8;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border-top: 3px solid #A68A64;
+}
